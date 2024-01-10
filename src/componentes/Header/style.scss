@@ -1,0 +1,80 @@
+.global-nav {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 50px;
+    max-height: 53px;
+    border-bottom: 1px solid #ebebeb;
+
+    .content {
+        display: flex;
+        width: 73.5%;
+        align-items: center;
+
+        img {
+            border-radius: 4px;
+            width: 36px;
+        }
+
+        .search-nav {
+            flex-grow: 1;
+            max-width: 68%;
+
+            input {
+                background: #edf3f8;
+                width: 280px;
+                padding: 9.5px 25px;
+                border: 0;
+                border-radius: 4px;
+                margin: 0 9px;
+                transition: all ease-in-out 0.2s;
+            }
+
+            input:focus {
+                width: 365px;
+            }
+        }
+
+        .teste {
+            display: flex;
+            padding: 0 35px;
+
+            .icon {
+                cursor: pointer;
+                width: 80px;
+                margin: 0 10px;
+                height: 55px;
+                text-align: center;
+                transition: all 0.2s;
+
+                svg {
+                    fill: #f27127a7;
+                    margin-top: 5px;
+                    width: 28px;
+                }
+
+                &.home:hover svg,
+                &.message:hover svg,
+                &.notification:hover svg {
+                    fill: #e35f13;
+                }
+
+                p {
+                    font-size: .7em;
+                }
+            }
+        }
+
+        .div-profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 40px;
+                border-radius: 50%;
+                border: 2px solid #383a3c;
+            }
+        }
+    }
+}
