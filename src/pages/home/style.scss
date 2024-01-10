@@ -5,38 +5,51 @@
     .nav-home {
         background: #fff;
         display: flex;
-        width: 100%;
+        width: 75%;
+        margin: auto;
         max-height: 80px;
         align-items: center;
+        justify-content: space-between;
 
         .div-logo {
-            background-color: black;
             width: 150px;
+            height: 80px;
 
             img {
-                width: 150px;
+                width: 160px;
             }
         }
 
-        .icon {
-            width: 80px;
-            margin: 0 10px;
-            height: 55px;
-            text-align: center;
-            cursor: pointer;
+        .div-content {
+            display: flex;
+            margin-right: 10px;
+            align-items: center;
 
-            svg {
-                width: 30px;
-                fill-opacity: 0.5;
-            }
+            .icon {
+                width: 100px;
+                margin: 0 10px;
+                height: 55px;
+                text-align: center;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px solid #cccccc7e;
 
-            &.article:hover svg {
-                transition: all 0.2s ease-in-out;
-                fill-opacity: 1;
-            }
+                svg {
+                    width: 25px;
+                    fill-opacity: 0.5;
+                }
 
-            p {
-                font-size: .7em;
+                &.article:hover svg {
+                    transition: all 0.2s ease-in-out;
+                    fill-opacity: 1;
+                }
+
+                p {
+                    font-size: .7em;
+                }
             }
         }
     }
