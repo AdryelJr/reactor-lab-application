@@ -1,6 +1,7 @@
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import { ButtonEnter } from '../../componentes/ButtonEnter';
 import { ButtonRegister } from '../../componentes/ButtonRegister';
+
 import './style.scss';
 
 export function Home() {
