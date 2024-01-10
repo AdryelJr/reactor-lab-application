@@ -1,0 +1,17 @@
+.button-enter {
+    button {
+        font-family: 'Roboto', sans-serif;
+        padding: 12px 25px;
+        background-color: transparent;
+        border: 2px solid #f27127;
+        margin: 0 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: .2s all ease-in-out;
+        color: #f27127;
+    }
+    button:hover{
+        background-color: #fff7f3;
+    }
+}
