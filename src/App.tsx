@@ -1,29 +1,17 @@
-import { useState } from "react";
-import { Header } from "./componentes/Header";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { Home } from "./pages/home/index";
+import { Feed } from "./pages/feed/index";
 
 function App() {
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
-
-  const handleSearchFocus = () => {
-    setIsSearchFocused(true);
-  };
-
-  const handleSearchBlur = () => {
-    setIsSearchFocused(false);
-  };
-
   return (
-    <div>
-      <section>
-        <Header
-          onSearchFocus={handleSearchFocus}
-          onSearchBlur={handleSearchBlur}
-        />
-      </section>
-      <section className={`body ${isSearchFocused ? 'dark-background' : ''}`}>
-        <h1>Hello world!!!!</h1>
-      </section>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/feed" element={<Feed />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 

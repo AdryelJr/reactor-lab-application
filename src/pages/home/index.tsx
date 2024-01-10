@@ -1,4 +1,4 @@
-import logoCompletImg from '../assets/image/ReactorLogo.png';
+import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 export function Home() {
     return (
