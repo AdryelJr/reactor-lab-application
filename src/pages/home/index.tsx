@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
-import { ButtonEnter } from '../../componentes/ButtonEnter';
-import { ButtonRegister } from '../../componentes/ButtonRegister';
+import { Button } from '../../componentes/Button';
 
 
 import './style.scss';
@@ -22,10 +21,10 @@ export function Home() {
                             <p>Artigos</p>
                         </div>
                         <Link to='/cadastro'>
-                            <ButtonRegister fraseButton="Cadastre-se agora" />
+                            <Button fraseButton="Cadastre-se agora" />
                         </Link>
                         <Link to='/login'>
-                            <ButtonEnter fraseButton="Entrar" />
+                            <Button fraseButton="Entrar" />
                         </Link>
 
 

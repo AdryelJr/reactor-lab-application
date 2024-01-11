@@ -1,13 +1,42 @@
-import logoCompletImg from '../../assets/image/ReactorLogo.png';
-import { ButtonEnter } from '../../componentes/ButtonEnter';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import iconGoogle from '../../assets/image/iconGoogle.png';;
-
-import './style.scss';
-import { ButtonRegister } from '../../componentes/ButtonRegister';
+import { Button } from '../../componentes/Button';
 import { Link } from 'react-router-dom';
 
+import iconGoogle from '../../assets/image/iconGoogle.png';;
+import logoCompletImg from '../../assets/image/ReactorLogo.png';
+
+import './style.scss';
+
+
 export function Register() {
+
+    const [erroPass, setErroPass] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const navigate = useNavigate();
+
+
+    function handleCreateAccount(event: FormEvent) {
+        event.preventDefault()
+        if (password !== confirmPassword || password.length < 6) {
+            setErroPass(true)
+            return;
+        }
+        setErroPass(false);
+
+        const userData = {
+            name: name,
+            senha: password,
+            email: email
+        }
+
+        navigate('/feed', { state: { userData: userData } });
+    }
+
     return (
         <>
             <div className='container-SignIn'>
@@ -23,7 +52,7 @@ export function Register() {
                             <p>Artigos</p>
                         </div>
                         <Link to='/login'>
-                            <ButtonEnter fraseButton='Entrar' />
+                            <Button fraseButton='Entrar' />
                         </Link>
                     </div>
                 </nav>
@@ -36,26 +65,39 @@ export function Register() {
                         <form>
                             <label>Nome</label>
                             <input
+                                required
                                 type="text"
                                 placeholder='Nome completo'
+                                onChange={(e) => (setName(e.target.value))}
+                                value={name}
                             />
                             <label>E-mail</label>
                             <input
+                                required
                                 type="text"
                                 placeholder='E-mail'
+                                onChange={(e) => (setEmail(e.target.value))}
+                                value={email}
                             />
                             <label>Senha</label>
                             <input
                                 type="password"
                                 placeholder='Senha'
+                                onChange={(e) => (setPassword(e.target.value))}
+                                value={password}
                             />
                             <label>Senha</label>
                             <input
                                 type="password"
                                 placeholder='Confirmar senha'
+                                onChange={(e) => (setConfirmPassword(e.target.value))}
+                                value={confirmPassword}
                             />
+
+                            <p className={`erroPassword ${erroPass ? 'visible' : ''}`}>Senhas não conferem</p>
+
                             <span>Já tem uma conta? <a href="/login">Entrar agora</a></span>
-                            <ButtonRegister fraseButton='Cadastrar'></ButtonRegister>
+                            <Button onClick={handleCreateAccount} fraseButton='Cadastrar' />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>

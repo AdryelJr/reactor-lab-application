@@ -72,6 +72,7 @@
             }
 
             form {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -93,7 +94,21 @@
                     border: 1px solid #f27127;
                 }
 
-                span{
+                .erroPassword {
+                    bottom: 6.3em;
+                    right: 3px;
+                    position: absolute;
+                    color: red;
+                    opacity: 0;
+                    transition: opacity 0.2s ease-in-out;
+
+                    &.visible {
+                        opacity: 1;
+                    }
+                }
+
+
+                span {
                     margin-bottom: 20px;
                 }
 
@@ -106,13 +121,14 @@
                     text-decoration: underline;
                 }
 
-                button{
+                button {
                     margin: 0;
                     background-color: #f27127;
                     width: 100%;
                     color: #fff;
                 }
-                button:hover{
+
+                button:hover {
                     background-color: #cb4f07;
                 }
             }
@@ -124,25 +140,25 @@
                     text-align: center;
                     margin: 10px 0 25px 0;
                     position: relative;
-                
+
                     &::before,
                     &::after {
-                      content: '';
-                      position: absolute;
-                      top: 50%;
-                      width: 45%;
-                      height: 1px;
-                      background-color: #333333aa;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        width: 45%;
+                        height: 1px;
+                        background-color: #333333aa;
                     }
-                
+
                     &::before {
-                      left: 0;
+                        left: 0;
                     }
-                
+
                     &::after {
-                      right: 0;
+                        right: 0;
                     }
-                  }
+                }
 
                 .button-google {
                     width: 100%;

@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { Header } from "../../componentes/Header";
+import { useLocation } from "react-router-dom";
 
-import './style.scss'
-import { ButtonEnter } from "../../componentes/ButtonEnter";
+import { Header } from "../../componentes/Header";
+import { Button } from "../../componentes/Button";
 import { ProfileImg } from "../../componentes/ProfileImg";
 
+import './style.scss'
+
 export function Feed() {
+  const location = useLocation();
+  const userData = location.state?.userData;
+
+  console.log(userData);
+
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const handleSearchFocus = () => {
@@ -41,7 +48,7 @@ export function Feed() {
               <textarea
                 placeholder="No que você está pensando?"
               />
-              <ButtonEnter fraseButton="Enviar"></ButtonEnter>
+              <Button fraseButton="Enviar" />
             </form>
           </div>
 

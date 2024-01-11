@@ -1,13 +1,26 @@
+import { FormEvent, useState } from 'react';
+
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
-import { ButtonEnter } from '../../componentes/ButtonEnter';
-
-import iconGoogle from '../../assets/image/iconGoogle.png';;
-
-import './style.scss';
-import { ButtonRegister } from '../../componentes/ButtonRegister';
+import iconGoogle from '../../assets/image/iconGoogle.png';
+import { Button } from '../../componentes/Button';
 import { Link } from 'react-router-dom';
 
+import './style.scss';
+
 export function SignIn() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function handleJoinAccount(event: FormEvent) {
+        event?.preventDefault();
+        const userData = {
+            email: email,
+            password: password
+        }
+        console.log(userData)
+    }
+
     return (
         <>
             <div className='container-SignIn'>
@@ -23,7 +36,7 @@ export function SignIn() {
                             <p>Artigos</p>
                         </div>
                         <Link to="/cadastro">
-                            <ButtonRegister fraseButton='Cadastre-se agora' />
+                            <Button fraseButton='Cadastre-se agora' />
                         </Link>
                     </div>
                 </nav>
@@ -39,14 +52,18 @@ export function SignIn() {
                             <input
                                 type="text"
                                 placeholder='E-mail'
+                                onChange={(e) => (setEmail(e.target.value))}
+                                value={email}
                             />
                             <label>Senha</label>
                             <input
                                 type="password"
                                 placeholder='Senha'
+                                onChange={(e) => (setPassword(e.target.value))}
+                                value={password}
                             />
                             <a href="#">Esqueceu a senha?</a>
-                            <ButtonEnter fraseButton='Entrar'></ButtonEnter>
+                            <Button onClick={handleJoinAccount} fraseButton='Entrar' />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>
@@ -61,8 +78,6 @@ export function SignIn() {
                         <img src="https://certificacaoiso.com.br/wp-content/uploads/2019/11/lancamento-do-projeto-de-desenvolvimento-em-desenvolvimento_82574-7825.jpg" alt="imagem section main" />
                     </div>
                 </main>
-
-
             </div>
         </>
     )
