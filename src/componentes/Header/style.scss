@@ -15,7 +15,7 @@
             width: 59vw;
         }
 
-        img {
+        .img {
             border-radius: 4px;
             width: 36px;
         }
@@ -69,16 +69,21 @@
             }
         }
 
-        .div-profile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .div-profile{
+            cursor: pointer;
+            transition: all .1s ease-in-out;
 
-            img {
-                width: 40px;
-                border-radius: 50%;
-                border: 2px solid #383a3c;
+            img{
+                width: 38px;
             }
+
+            p{
+                font-size: .8em;
+                text-align: center;
+            }
+        }
+        .div-profile:hover{
+            opacity: 0.8;
         }
     }
 }

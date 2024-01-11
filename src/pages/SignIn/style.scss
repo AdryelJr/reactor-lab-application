@@ -103,11 +103,15 @@
                     text-decoration: underline;
                 }
 
-                button{
+                button {
                     margin: 0;
                     background-color: #f27127;
                     width: 75%;
                     color: #fff;
+                }
+
+                button:hover {
+                    background-color: #cb4f07;
                 }
             }
 
@@ -118,25 +122,25 @@
                     text-align: center;
                     margin: 25px 0 40px 0;
                     position: relative;
-                
+
                     &::before,
                     &::after {
-                      content: '';
-                      position: absolute;
-                      top: 50%;
-                      width: 45%;
-                      height: 1px;
-                      background-color: #333333aa;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        width: 45%;
+                        height: 1px;
+                        background-color: #333333aa;
                     }
-                
+
                     &::before {
-                      left: 0;
+                        left: 0;
                     }
-                
+
                     &::after {
-                      right: 0;
+                        right: 0;
                     }
-                  }
+                }
 
                 .button-google {
                     width: 100%;

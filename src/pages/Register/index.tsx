@@ -54,7 +54,7 @@ export function Register() {
                                 type="password"
                                 placeholder='Confirmar senha'
                             />
-                            <span>Já tem uma conta? <a href="#">Entrar agora</a></span>
+                            <span>Já tem uma conta? <a href="/login">Entrar agora</a></span>
                             <ButtonRegister fraseButton='Cadastrar'></ButtonRegister>
                         </form>
                         <div className='bottom-form'>

@@ -1,32 +1,18 @@
-import { useState } from 'react'
 import logoImg from '../../assets/image/Rl.png'
 import './style.scss'
+import { ProfileImg } from '../ProfileImg'
 
 type SearchFocus = {
     onSearchFocus: any
     onSearchBlur: any
 }
 
-type UserGitHubType = {
-    name: string,
-    avatar_url: string
-}
-
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
-    const nameGitHub = "Adryeljr";
-    const [user, setUser] = useState<UserGitHubType | null>(null);
-
-    const fetchGitHubUser = async () => {
-        const response = await fetch(`https://api.github.com/users/${nameGitHub}`);
-        const userData = await response.json();
-        setUser(userData);
-    };
-    fetchGitHubUser();
 
     return (
         <div className="global-nav-menu">
             <div className='content'>
-                <img src={logoImg} alt="React Lab" />
+                <img className='img' src={logoImg} alt="React Lab" />
                 <div className='search-nav'>
                     <input
                         type="text"
@@ -53,7 +39,8 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                 </div>
 
                 <div className='div-profile'>
-                    <img src={user?.avatar_url} alt={user?.name} />
+                    <ProfileImg />
+                    <p>Perfil</p>
                 </div>
             </div>
         </div>

@@ -10,17 +10,3 @@ body {
     color: #383a3c;
 }
 
-.body.dark-background {
-    filter: brightness(0.7);
-}
-
-.body.dark-background:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}

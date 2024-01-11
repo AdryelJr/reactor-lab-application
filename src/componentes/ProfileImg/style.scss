@@ -1,0 +1,11 @@
+.div-profile-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 45px;
+        border-radius: 9999px;
+        border: 2px solid #CCC;
+    }
+}
