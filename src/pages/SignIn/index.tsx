@@ -5,6 +5,7 @@ import iconGoogle from '../../assets/image/iconGoogle.png';;
 
 import './style.scss';
 import { ButtonRegister } from '../../componentes/ButtonRegister';
+import { Link } from 'react-router-dom';
 
 export function SignIn() {
     return (
@@ -21,7 +22,9 @@ export function SignIn() {
                             </svg>
                             <p>Artigos</p>
                         </div>
-                        <ButtonRegister fraseButton='Cadastre-se agora'></ButtonRegister>
+                        <Link to="/cadastro">
+                            <ButtonRegister fraseButton='Cadastre-se agora' />
+                        </Link>
                     </div>
                 </nav>
 

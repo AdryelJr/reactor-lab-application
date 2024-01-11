@@ -1,0 +1,170 @@
+.container-SignIn {
+    background-color: #fff;
+    height: 100vh;
+
+    .nav-SignIn {
+        background: #fff;
+        display: flex;
+        width: 75%;
+        margin: auto;
+        max-height: 80px;
+        align-items: center;
+        justify-content: space-between;
+
+        .div-logo {
+            width: 150px;
+            height: 80px;
+
+            img {
+                width: 160px;
+            }
+        }
+
+        .div-content {
+            display: flex;
+            margin-right: 10px;
+            align-items: center;
+
+            .icon {
+                width: 100px;
+                margin: 0 10px;
+                height: 55px;
+                text-align: center;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px solid #cccccc7e;
+
+                svg {
+                    width: 25px;
+                    fill-opacity: 0.5;
+                }
+
+                &.article:hover svg {
+                    transition: all 0.2s ease-in-out;
+                    fill-opacity: 1;
+                }
+
+                p {
+                    font-size: .7em;
+                }
+            }
+        }
+    }
+
+    .main-container {
+        display: flex;
+        justify-content: center;
+
+        .div-centro {
+            align-items: center;
+            width: 40vw;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            h1 {
+                font-size: 2.5em;
+                font-weight: 200;
+                color: #f27127;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 15px 0;
+                min-width: 420px;
+
+                input {
+                    padding: 14px 20px;
+                    width: 100%;
+                    border: 1px solid #333;
+                    border-radius: 5px;
+                    margin: 8px 0 20px 0;
+                    font-size: 15px;
+                    transition: all 0.1s ease-in-out;
+                }
+
+                input:focus {
+                    outline: none;
+                    border: 1px solid #f27127;
+                }
+
+                span{
+                    margin-bottom: 20px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #0a66c2;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                button{
+                    margin: 0;
+                    background-color: #f27127;
+                    width: 100%;
+                    color: #fff;
+                }
+                button:hover{
+                    background-color: #cb4f07;
+                }
+            }
+
+            .bottom-form {
+                width: 68%;
+
+                .linha-meio {
+                    text-align: center;
+                    margin: 10px 0 25px 0;
+                    position: relative;
+                
+                    &::before,
+                    &::after {
+                      content: '';
+                      position: absolute;
+                      top: 50%;
+                      width: 45%;
+                      height: 1px;
+                      background-color: #333333aa;
+                    }
+                
+                    &::before {
+                      left: 0;
+                    }
+                
+                    &::after {
+                      right: 0;
+                    }
+                  }
+
+                .button-google {
+                    width: 100%;
+                    background-color: transparent;
+                    padding: 0 10px;
+                    border: 1px solid #f27127;
+                    border-radius: 50px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+
+                    span {
+                        margin-left: 20px;
+                    }
+                }
+
+                .button-google:hover {
+                    border: 1px solid #e35a0b;
+                    background-color: #e0dfdf;
+                }
+            }
+        }
+    }
+}
