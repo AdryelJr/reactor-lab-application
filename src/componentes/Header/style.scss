@@ -2,14 +2,18 @@
     background-color: #fff;
     display: flex;
     justify-content: center;
-    min-height: 50px;
-    max-height: 53px;
+    min-height: 63px;
+    max-height: 63px;
     border-bottom: 1px solid #ebebeb;
 
     .content {
         display: flex;
-        width: 73.5%;
+        width: 73.5vw;
         align-items: center;
+
+         @media (min-width: 1400px) {
+            width: 59vw;
+        }
 
         img {
             border-radius: 4px;
@@ -78,3 +82,5 @@
         }
     }
 }
+
+

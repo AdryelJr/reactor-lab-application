@@ -7,7 +7,7 @@ type TextoButton = {
 export function ButtonEnter(texto: TextoButton){
     return(
         <div className='button-enter'>
-            <button>{texto.fraseButton}</button>
+            <button type='submit'>{texto.fraseButton}</button>
         </div>
     )
 }

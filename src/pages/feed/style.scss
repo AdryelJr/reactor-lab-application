@@ -4,29 +4,103 @@
         justify-content: center;
 
         .feed-left {
-            background-color: aquamarine;
-            width: 100px;
+            border: .5px solid #cccccca7;
+            margin: 12px;
+            border-radius: 8px;
+            background-color: #fff;
+            max-width: 250px;
+            width: 13vw;
+
+            .tamplate{
+                position: relative;
+                background-color: #000;
+                width: 100%;
+                height: 5.5em;
+                border-radius: 8px 8px 0 0;
+
+                img{
+                    width: 4.5em;
+                    border-radius: 50px;
+                    border: 2px solid #ccc;
+                    position: absolute;
+                    bottom: -2.4em;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
         }
 
         .feed-center {
-            .input {
-                margin: 10px;
-                padding: 10px;
+            .div-publication {
+                margin: 12px;
+                padding: 15px 10px 10px 10px;
                 border: .5px solid #cccccca7;
-                border-radius: 10px;
+                border-radius: 8px;
                 background-color: #fff;
-                width: 30.5vw;
+                width: 65em;
+                max-width: 600px;
+                height: 200px;
+                display: flex;
+
+
+                img {
+                    width: 45px;
+                    border-radius: 999px;
+                    border: 1px solid;
+                }
+
+                form{
+                    position: relative;
+                    margin: 2px 10PX;
+                    width: 100%;
+              
+                    textarea {
+                        font-size: 15px;
+                        width: 100%;
+                        padding: 15px;
+                        border-radius: 10px;
+                        border: 1px solid #ccc;
+                        resize: none;
+                        min-height: 125px;
+                        transition: all 0.1s ease-in-out;
+                    }
+                    textarea:focus{
+                        outline: none;
+                        border: 1px solid #000;
+                    }
+                    button{
+                        position: absolute;
+                        right: -10px;
+                        bottom: 0;
+                        margin-top: 5px;
+                        background-color: #f27127;
+                        color: #fff;
+                        padding: 8px 20px;
+                    }
+                    button:hover{
+                        background-color: #f27127d0;
+                        border: 2px solid #ec915c65;
+                    }
+                }
             }
 
             .feed-content {
-                background-color: blanchedalmond;
-                width: 100px;
+                background-color: #fff;
+                width: 96.3%;
+                margin: 12px;
+                padding: 15px;
+                border-radius: 8px;
             }
         }
 
         .feed-right {
-            background-color: brown;
-            width: 100px;
+            padding: 10px;
+            border: .5px solid #cccccca7;
+            margin: 12px;
+            border-radius: 8px;
+            background-color: #fff;
+            max-width: 250px;
+            width: 13vw;
         }
     }
 }
