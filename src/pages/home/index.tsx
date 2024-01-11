@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import { ButtonEnter } from '../../componentes/ButtonEnter';
 import { ButtonRegister } from '../../componentes/ButtonRegister';
@@ -20,8 +21,12 @@ export function Home() {
                             </svg>
                             <p>Artigos</p>
                         </div>
-                        <ButtonRegister fraseButton="Cadastre-se agora"></ButtonRegister>
-                        <ButtonEnter fraseButton="Entrar"></ButtonEnter>
+                        <Link to='/cadastro'>
+                            <ButtonRegister fraseButton="Cadastre-se agora" />
+                        </Link>
+                        <Link to='/login'>
+                            <ButtonEnter fraseButton="Entrar" />
+                        </Link>
 
 
 
@@ -29,9 +34,9 @@ export function Home() {
                 </nav>
 
 
-            <main>
-                <h1>outra coisa...</h1>
-            </main>
+                <main>
+                    <h1>outra coisa...</h1>
+                </main>
 
 
             </div>

@@ -52,7 +52,7 @@ export function Register() {
                             <label>Senha</label>
                             <input
                                 type="password"
-                                placeholder='Conformar senha'
+                                placeholder='Confirmar senha'
                             />
                             <span>Já tem uma conta? <a href="#">Entrar agora</a></span>
                             <ButtonRegister fraseButton='Cadastrar'></ButtonRegister>
