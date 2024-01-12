@@ -24,7 +24,7 @@ export function Home() {
                             <Button fraseButton="Cadastre-se agora" />
                         </Link>
                         <Link to='/login'>
-                            <Button fraseButton="Entrar" />
+                            <Button className="enter" fraseButton="Entrar" />
                         </Link>
 
 

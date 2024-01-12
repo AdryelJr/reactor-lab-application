@@ -11,7 +11,7 @@
         width: 73.5vw;
         align-items: center;
 
-         @media (min-width: 1400px) {
+        @media (min-width: 1400px) {
             width: 59vw;
         }
 
@@ -36,6 +36,29 @@
 
             input:focus {
                 width: 365px;
+            }
+
+            .div-input-search {
+                display: none;
+                opacity: 0;
+                position: absolute;
+                background-color: #fff;
+                padding: 15px 20px;
+                width: 368px;
+                margin: 1px 6px;
+                border-radius: 8px;
+                height: 100px;
+                z-index: 999;
+                border: 1px solid #ccc;
+                transition: all ease-in-out 0.2s;
+            }
+
+            &.show{
+                .div-input-search{
+                    opacity: 1;
+                    display: block;
+                    transition: all ease-in-out 0.2s;
+                }
             }
         }
 
@@ -69,23 +92,22 @@
             }
         }
 
-        .div-profile{
+        .div-profile {
             cursor: pointer;
             transition: all .1s ease-in-out;
 
-            img{
+            img {
                 width: 38px;
             }
 
-            p{
+            p {
                 font-size: .8em;
                 text-align: center;
             }
         }
-        .div-profile:hover{
+
+        .div-profile:hover {
             opacity: 0.8;
         }
     }
 }
-
-

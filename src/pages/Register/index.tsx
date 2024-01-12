@@ -52,7 +52,7 @@ export function Register() {
                             <p>Artigos</p>
                         </div>
                         <Link to='/login'>
-                            <Button fraseButton='Entrar' />
+                            <Button className="enter" fraseButton='Entrar' />
                         </Link>
                     </div>
                 </nav>

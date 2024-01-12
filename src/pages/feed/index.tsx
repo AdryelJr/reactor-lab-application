@@ -30,35 +30,35 @@ export function Feed() {
           onSearchFocus={handleSearchFocus}
           onSearchBlur={handleSearchBlur}
         />
-      </section>
 
-      <section className={`body ${isSearchFocused ? 'dark-background' : ''}`}>
-        <div className="feed-left">
-          <div className="tamplate">
-            <ProfileImg />
-          </div>
-        </div>
-
-        <div className="feed-center">
-          <div className="div-publication">
-            <div>
+        <div className={`body ${isSearchFocused ? 'dark-background' : ''}`}>
+          <div className="feed-left">
+            <div className="tamplate">
               <ProfileImg />
             </div>
-            <form>
-              <textarea
-                placeholder="No que você está pensando?"
-              />
-              <Button fraseButton="Enviar" />
-            </form>
           </div>
 
-          <main className="feed-content">
-            Por hoje é só...
-          </main>
-        </div>
+          <div className="feed-center">
+            <div className="div-publication">
+              <div>
+                <ProfileImg />
+              </div>
+              <form>
+                <textarea
+                  placeholder="No que você está pensando?"
+                />
+                <Button fraseButton="Enviar" />
+              </form>
+            </div>
 
-        <div className="feed-right">
-          Notícias do app
+            <main className="feed-content">
+              Por hoje é só...
+            </main>
+          </div>
+
+          <div className="feed-right">
+            Notícias do app
+          </div>
         </div>
       </section>
     </div>

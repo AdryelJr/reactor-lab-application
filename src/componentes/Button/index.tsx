@@ -5,12 +5,13 @@ import './style.scss'
 type TextoButton = {
     fraseButton: string
     onClick?: (event: FormEvent) => void;
+    className?: string
 }
 
 export function Button(label: TextoButton){
     return(
         <div className='button'>
-            <button onClick={label.onClick}>{label.fraseButton}</button>
+            <button className={label.className} onClick={label.onClick}>{label.fraseButton}</button>
         </div>
     )
 }

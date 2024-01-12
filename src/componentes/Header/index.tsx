@@ -1,6 +1,7 @@
 import logoImg from '../../assets/image/Rl.png'
 import './style.scss'
 import { ProfileImg } from '../ProfileImg'
+import { useState } from 'react'
 
 type SearchFocus = {
     onSearchFocus: any
@@ -8,22 +9,40 @@ type SearchFocus = {
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
+    const [isSearchVisible, setIsSearchVisible] = useState(false)
+
+    const handleInputFocus = () => {
+        setTimeout(() => {
+            setIsSearchVisible(true);
+        }, 500)
+        onSearchFocus();
+    }
+
+    const handleInputblur = () => {
+        setIsSearchVisible(false)
+        onSearchBlur();
+    }
 
     return (
         <div className="global-nav-menu">
             <div className='content'>
                 <img className='img' src={logoImg} alt="React Lab" />
-                <div className='search-nav'>
+                <div className={`search-nav ${isSearchVisible ? 'show' : ''}`}>
                     <input
                         type="text"
                         placeholder='Pesquisar'
-                        onFocus={onSearchFocus}
-                        onBlur={onSearchBlur}
+                        onFocus={handleInputFocus}
+                        onBlur={handleInputblur}
                     />
+                    {isSearchVisible && (
+                        <div className='div-input-search'>
+                            div em branco perfil
+                        </div>
+                    )}
                 </div>
                 <div className='global-nav'>
                     <div className='icon home'>
-                        <svg fill="#f27127" viewBox="-4.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#f27127"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>home</title> <path d="M19.469 12.594l3.625 3.313c0.438 0.406 0.313 0.719-0.281 0.719h-2.719v8.656c0 0.594-0.5 1.125-1.094 1.125h-4.719v-6.063c0-0.594-0.531-1.125-1.125-1.125h-2.969c-0.594 0-1.125 0.531-1.125 1.125v6.063h-4.719c-0.594 0-1.125-0.531-1.125-1.125v-8.656h-2.688c-0.594 0-0.719-0.313-0.281-0.719l10.594-9.625c0.438-0.406 1.188-0.406 1.656 0l2.406 2.156v-1.719c0-0.594 0.531-1.125 1.125-1.125h2.344c0.594 0 1.094 0.531 1.094 1.125v5.875z"></path> </g></svg>
+                        <svg viewBox="-4.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#f27127"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>home</title> <path d="M19.469 12.594l3.625 3.313c0.438 0.406 0.313 0.719-0.281 0.719h-2.719v8.656c0 0.594-0.5 1.125-1.094 1.125h-4.719v-6.063c0-0.594-0.531-1.125-1.125-1.125h-2.969c-0.594 0-1.125 0.531-1.125 1.125v6.063h-4.719c-0.594 0-1.125-0.531-1.125-1.125v-8.656h-2.688c-0.594 0-0.719-0.313-0.281-0.719l10.594-9.625c0.438-0.406 1.188-0.406 1.656 0l2.406 2.156v-1.719c0-0.594 0.531-1.125 1.125-1.125h2.344c0.594 0 1.094 0.531 1.094 1.125v5.875z"></path> </g></svg>
                         <p>Home</p>
                     </div>
 
@@ -33,7 +52,7 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     </div>
 
                     <div className='icon notification'>
-                        <svg fill="#f27127" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#f27127"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></path></g></svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#f27127"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></path></g></svg>
                         <p>Notificação</p>
                     </div>
                 </div>
