@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../componentes/Button';
 import { Link } from 'react-router-dom';
@@ -9,7 +8,6 @@ import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
 
-
 export function Register() {
 
     const [erroPass, setErroPass] = useState(false);
@@ -17,24 +15,14 @@ export function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const navigate = useNavigate();
 
-
-    function handleCreateAccount(event: FormEvent) {
+    async function handleCreateAccount(event: FormEvent) {
         event.preventDefault()
         if (password !== confirmPassword || password.length < 6) {
             setErroPass(true)
             return;
         }
-        setErroPass(false);
-
-        const userData = {
-            name: name,
-            senha: password,
-            email: email
-        }
-
-        navigate('/feed', { state: { userData: userData } });
+        setErroPass(false)
     }
 
     return (
@@ -108,8 +96,6 @@ export function Register() {
                         </div>
                     </div>
                 </main>
-
-
             </div>
         </>
     )

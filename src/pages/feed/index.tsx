@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import { Header } from "../../componentes/Header";
 import { Button } from "../../componentes/Button";
@@ -7,12 +6,8 @@ import { ProfileImg } from "../../componentes/ProfileImg";
 
 import './style.scss'
 
+
 export function Feed() {
-  const location = useLocation();
-  const userData = location.state?.userData;
-
-  console.log(userData);
-
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const handleSearchFocus = () => {

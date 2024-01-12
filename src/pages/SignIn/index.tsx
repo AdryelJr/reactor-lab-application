@@ -1,4 +1,3 @@
-import { FormEvent, useState } from 'react';
 
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import iconGoogle from '../../assets/image/iconGoogle.png';
@@ -8,18 +7,6 @@ import { Link } from 'react-router-dom';
 import './style.scss';
 
 export function SignIn() {
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    function handleJoinAccount(event: FormEvent) {
-        event?.preventDefault();
-        const userData = {
-            email: email,
-            password: password
-        }
-        console.log(userData)
-    }
 
     return (
         <>
@@ -52,18 +39,14 @@ export function SignIn() {
                             <input
                                 type="text"
                                 placeholder='E-mail'
-                                onChange={(e) => (setEmail(e.target.value))}
-                                value={email}
                             />
                             <label>Senha</label>
                             <input
                                 type="password"
                                 placeholder='Senha'
-                                onChange={(e) => (setPassword(e.target.value))}
-                                value={password}
                             />
                             <a href="#">Esqueceu a senha?</a>
-                            <Button onClick={handleJoinAccount} fraseButton='Entrar' />
+                            <Button fraseButton='Entrar' />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>
