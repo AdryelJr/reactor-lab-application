@@ -1,16 +1,16 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import './style.scss'
 
-type UserGitHubType = {
-    name: string,
-    avatar_url: string
-}
+// type UserGitHubType = {
+//     name: string,
+//     avatar_url: string
+// }
 
 export function ProfileImg() {
 
-    const nameGitHub = "Adryel";
-    const [user, setUser] = useState<UserGitHubType | null>(null);
+    // const nameGitHub = "Adryel";
+    // const [user, setUser] = useState<UserGitHubType | null>(null);
 
     // const fetchGitHubUser = async () => {
     //     const response = await fetch(`https://api.github.com/users/${nameGitHub}`);
