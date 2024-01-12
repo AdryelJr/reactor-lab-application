@@ -9,19 +9,19 @@ type UserGitHubType = {
 
 export function ProfileImg() {
 
-    const nameGitHub = "Adryeljr";
+    const nameGitHub = "Adryel";
     const [user, setUser] = useState<UserGitHubType | null>(null);
 
-    const fetchGitHubUser = async () => {
-        const response = await fetch(`https://api.github.com/users/${nameGitHub}`);
-        const user = await response.json();
-        setUser(user);
-    };
-    fetchGitHubUser();
+    // const fetchGitHubUser = async () => {
+    //     const response = await fetch(`https://api.github.com/users/${nameGitHub}`);
+    //     const user = await response.json();
+    //     setUser(user);
+    // };
+    // fetchGitHubUser();
 
     return (
         <div className="div-profile-img">
-            <img src={user?.avatar_url} alt={user?.name} />
+            <img src="https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png" alt="perfil" />
         </div>
     )
 }
