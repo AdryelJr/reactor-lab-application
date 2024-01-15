@@ -57,6 +57,7 @@
     .main-container {
         display: flex;
         justify-content: center;
+        background-color: #0ac232;
 
         .div-esquerda {
             width: 40vw;
@@ -172,6 +173,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .div-direita {
+
+            img{
+                display: none;
+            }
         }
     }
 }
