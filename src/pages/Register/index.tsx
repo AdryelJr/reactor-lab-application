@@ -7,6 +7,7 @@ import iconGoogle from '../../assets/image/iconGoogle.png';;
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
+import { createUser } from '../../services/connAPI';
 
 export function Register() {
 
@@ -22,7 +23,14 @@ export function Register() {
             setErroPass(true)
             return;
         }
-        setErroPass(false)
+        setErroPass(false);
+        try {
+            const user = await createUser({name, email, password});
+            console.log('Usuário cadastrado com sucesso: ', user);
+            
+        } catch (error) {
+            console.error('Erro ao cadastrar usuário: ', error)
+        }
     }
 
     return (

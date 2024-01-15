@@ -1,18 +1,24 @@
-const apiUrl = '';
+const apiUrl = 'http://localhost:3000';
 
-async function fetchData(){
-  try {
-    const response = await fetch(apiUrl);
+export const createUser = async (userData: { name: string, email: string, password: string }) => {
+    try {
+        const response = await fetch(`${apiUrl}/auth/signup`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
 
-    if(!response.ok) {
-      throw new Error(`Error: `)
+        if (response.ok) {
+            const responseData = await response.json();
+            return responseData;
+        } else {
+            throw new Error(`Erro ao cadastrar usuário: ${response.statusText}`);
+        }
+    } catch (error) {
+        console.error('Erro ao cadastrar usuário:', error);
+        throw error;
     }
-    const data = await response.json();
-    console.log(data);
+};
 
-  } catch (error){
-    console.log('Error fetching data: ', error);
-  }
-}
-
-fetchData();
