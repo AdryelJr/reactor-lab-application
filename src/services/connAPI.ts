@@ -1,4 +1,4 @@
-const apiUrl = 'https://api-reactor.vercel.app/';
+const apiUrl = '';
 
 async function fetchData(){
   try {
@@ -7,8 +7,9 @@ async function fetchData(){
     if(!response.ok) {
       throw new Error(`Error: `)
     }
-
     const data = await response.json();
+    console.log(data);
+
   } catch (error){
     console.log('Error fetching data: ', error);
   }
