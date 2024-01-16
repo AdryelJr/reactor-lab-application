@@ -15,7 +15,7 @@ export const createUser = async (userData: { name: string, email: string, passwo
             return responseData;
         } else {
             throw new Error(`Erro ao cadastrar usuário: ${response.statusText}`);
-        }
+        }   
     } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
         throw error;

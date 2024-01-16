@@ -1,12 +1,13 @@
 import { Header } from '../../componentes/Header';
 import { ProfileImg } from '../../componentes/ProfileImg';
+
 import './style.scss'
 
 export function ProfilePage() {
   return (
     <div>
       <Header />
-
+      
       <div className='content-profilePage'>
         <div className='div-profile'>
           <div className='banner'>
@@ -14,7 +15,7 @@ export function ProfilePage() {
           </div>
 
           <div className='profile-content'>
-            <h1>Nome</h1>
+            <h1>userName</h1>
             <p>something else from the profile</p>
           </div>
         </div>

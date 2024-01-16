@@ -27,7 +27,7 @@ export function Register() {
         setErroPass(false);
         try {
             const user = await createUser({ name, email, password });
-            console.log('Usuário cadastrado com sucesso: ', user);
+            console.log('Usuário criado!', user)
 
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error);
