@@ -8,8 +8,10 @@ import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
 import { createUser } from '../../services/connAPI';
+import { useUser } from '../../contexts/AuthContext';
 
 export function Register() {
+    const { setUserData } = useUser();
     const navigate = useNavigate();
     
     const [erroPass, setErroPass] = useState(false);
@@ -28,6 +30,7 @@ export function Register() {
         try {
             const user = await createUser({ name, email, password });
             console.log('Usuário criado!', user)
+            setUserData(user);
 
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error);

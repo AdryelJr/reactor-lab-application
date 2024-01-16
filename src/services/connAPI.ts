@@ -1,4 +1,5 @@
-const apiUrl = 'https://api-reactor-lab-off.vercel.app';
+// const apiUrl = 'https://api-reactor-lab-off.vercel.app';
+const apiUrl = 'http://localhost:3000';
 
 export const createUser = async (userData: { name: string, email: string, password: string }) => {
     try {
@@ -12,7 +13,7 @@ export const createUser = async (userData: { name: string, email: string, passwo
 
         if (response.ok) {
             const responseData = await response.json();
-            return responseData;
+            return responseData.user;
         } else {
             throw new Error(`Erro ao cadastrar usuário: ${response.statusText}`);
         }   
