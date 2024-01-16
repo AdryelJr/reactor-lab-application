@@ -14,7 +14,7 @@ export function ProfilePage() {
           </div>
 
           <div className='profile-content'>
-            <h1>Name profile</h1>
+            <h1>Nome</h1>
             <p>something else from the profile</p>
           </div>
         </div>
