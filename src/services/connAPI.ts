@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://api-reactor-lab-off.vercel.app';
 
 export const createUser = async (userData: { name: string, email: string, password: string }) => {
     try {
