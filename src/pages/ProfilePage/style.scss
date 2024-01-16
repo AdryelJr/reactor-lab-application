@@ -1,0 +1,40 @@
+.content-profilePage {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+
+  .div-profile {
+    background-color: #FFF;
+    max-height: 500px;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .banner {
+      position: relative;
+      border-radius: 10px 10px 0 0;
+      flex: 1; 
+      position: relative;
+
+      img {
+        width: 160px;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .profile-content {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      width: 100%;
+      padding: 60px 30px;
+      flex: 1; 
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
