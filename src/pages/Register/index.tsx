@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 
 import { Button } from '../../componentes/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import iconGoogle from '../../assets/image/iconGoogle.png';;
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
@@ -10,7 +10,8 @@ import './style.scss';
 import { createUser } from '../../services/connAPI';
 
 export function Register() {
-
+    const navigate = useNavigate();
+    
     const [erroPass, setErroPass] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -25,12 +26,19 @@ export function Register() {
         }
         setErroPass(false);
         try {
-            const user = await createUser({name, email, password});
+            const user = await createUser({ name, email, password });
             console.log('Usuário cadastrado com sucesso: ', user);
-            
+
         } catch (error) {
-            console.error('Erro ao cadastrar usuário: ', error)
+            console.error('Erro ao cadastrar usuário:', error);
+
+            if (error instanceof SyntaxError) {
+                throw new Error('Erro de análise JSON');
+            }
+            throw new Error('Erro desconhecido ao cadastrar usuário');
         }
+        
+        navigate('/feed');
     }
 
     return (
