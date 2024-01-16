@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 
 type User = {
     id: string;
@@ -19,6 +19,14 @@ const UserContext = createContext({} as AuthContextType);
 
 export function UserProvider(props: UserProviderProps) {
     const [userData, setUserData] = useState<User | undefined>();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setUserData(parsedUser);
+        }
+    }, [userData]);
 
     return (
         <UserContext.Provider value={{ user: userData, setUserData }}>
