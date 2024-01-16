@@ -119,5 +119,15 @@
             width: 13vw;
             max-height: 300px;
         }
+
+        @media screen and (max-width: 1200px) {
+            .feed-left {
+                display: none;
+            }
+
+            .feed-right {
+                display: none;
+            }
+        }
     }
 }

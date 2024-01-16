@@ -60,7 +60,8 @@
 
         .div-centro {
             align-items: center;
-            width: 40vw;
+            width: 100%;
+            max-width: 425px;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -71,6 +72,14 @@
                 color: #f27127;
             }
 
+            @media screen and (max-width: 1200px) {
+
+                h1 {
+                    font-size: 30px;
+                    width: 70vw;
+                }
+            }
+
             form {
                 position: relative;
                 display: flex;
@@ -78,6 +87,12 @@
                 justify-content: center;
                 padding: 15px 0;
                 min-width: 420px;
+
+                @media screen and (max-width: 420px) {
+                    form {
+                        width: 50vw;
+                    }
+                }
 
                 input {
                     padding: 14px 20px;
@@ -135,7 +150,7 @@
 
             .bottom-form {
                 max-width: 425px;
-                width: 68%;
+                width: 100%;
 
                 .linha-meio {
                     text-align: center;

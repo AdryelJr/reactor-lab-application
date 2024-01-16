@@ -18,11 +18,25 @@
         .img {
             border-radius: 4px;
             width: 36px;
+
+            @media (max-width: 999px) {
+                margin-left: -1em;
+            }
+            @media (max-width: 850px) {
+                margin-left: -5em;
+            }
         }
 
         .search-nav {
             flex-grow: 1;
             max-width: 68%;
+
+            @media (max-width: 999px) {
+                max-width: 50%;
+            }
+            @media (max-width: 850px) {
+                max-width: 30%;
+            }
 
             input {
                 background: #edf3f8;
@@ -73,6 +87,7 @@
                 height: 55px;
                 text-align: center;
                 transition: all 0.2s;
+                text-decoration: none;
 
                 svg {
                     fill: #f27127a7;
@@ -95,6 +110,8 @@
         .div-profile {
             cursor: pointer;
             transition: all .1s ease-in-out;
+            text-decoration: none;
+            color: #333;
 
             img {
                 width: 38px;
