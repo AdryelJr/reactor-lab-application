@@ -18,13 +18,14 @@ type UserProviderProps = {
 const UserContext = createContext({} as AuthContextType);
 
 export function UserProvider(props: UserProviderProps) {
-    const [userData, setUserData] = useState<User | undefined>();
+    const [userData, setUserData] = useState<User | undefined>(() => {
+        const storedUser = localStorage.getItem('user');
+        return storedUser ? JSON.parse(storedUser) : undefined;
+    });
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            const parsedUser = JSON.parse(storedUser);
-            setUserData(parsedUser);
+        if (userData) {
+            localStorage.setItem('user', JSON.stringify(userData));
         }
     }, [userData]);
 

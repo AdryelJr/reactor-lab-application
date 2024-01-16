@@ -3,10 +3,11 @@ import './style.scss'
 import { ProfileImg } from '../ProfileImg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { SingOut } from '../../hook/singOut/SingOut'
 
 type SearchFocus = {
-    onSearchFocus?: any
-    onSearchBlur?: any
+    onSearchFocus?: any;
+    onSearchBlur?: any;
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
@@ -62,6 +63,7 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     <ProfileImg />
                     <p>Perfil</p>
                 </Link>
+                <SingOut></SingOut>
             </div>
         </div>
     )

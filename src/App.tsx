@@ -8,6 +8,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { UserProvider } from './contexts/AuthContext';
 
 function App() {
+
   return (
     <BrowserRouter>
       <UserProvider>
@@ -15,9 +16,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/feed" element={<Feed />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/cadastro" element={<Register />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<SignIn />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>

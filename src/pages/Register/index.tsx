@@ -29,7 +29,7 @@ export function Register() {
         setErroPass(false);
         try {
             const user = await createUser({ name, email, password });
-            console.log('Usuário criado!', user)
+            console.log('Usuário criado!')
             setUserData(user);
 
         } catch (error) {
@@ -40,7 +40,6 @@ export function Register() {
             }
             throw new Error('Erro desconhecido ao cadastrar usuário');
         }
-        
         navigate('/feed');
     }
 
