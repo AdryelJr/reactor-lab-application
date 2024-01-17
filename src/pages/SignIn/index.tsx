@@ -1,12 +1,32 @@
-
+import { FormEvent, useState } from 'react';
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import iconGoogle from '../../assets/image/iconGoogle.png';
 import { Button } from '../../componentes/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInUser } from '../../services/connAPI';
+import { useUser } from '../../contexts/AuthContext';
 
 import './style.scss';
 
 export function SignIn() {
+    const { setUserData } = useUser();
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleSignInAccount(event: FormEvent) {
+        event.preventDefault();
+
+        try {
+            const user = await signInUser({ email, password });
+            setUserData(user);
+            navigate('/feed');
+
+        } catch (error) {
+            console.log('Erro ao fazer login: ', error);
+        }
+    }
 
     return (
         <>
@@ -39,14 +59,18 @@ export function SignIn() {
                             <input
                                 type="text"
                                 placeholder='E-mail'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
                             />
                             <label>Senha</label>
                             <input
                                 type="password"
                                 placeholder='Senha'
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
                             />
                             <a href="#">Esqueceu a senha?</a>
-                            <Button fraseButton='Entrar' />
+                            <Button onClick={handleSignInAccount} fraseButton='Entrar' />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>

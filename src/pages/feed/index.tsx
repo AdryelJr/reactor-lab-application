@@ -5,17 +5,17 @@ import { Button } from "../../componentes/Button";
 import { ProfileImg } from "../../componentes/ProfileImg";
 
 import './style.scss'
-import { useUser } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+// import { useUser } from "../../contexts/AuthContext";
+// import { useNavigate } from "react-router-dom";
 
 export function Feed() {
-  const Navigate = useNavigate();
-  const { user } = useUser();
+  // const Navigate = useNavigate();
+  // const { user } = useUser();
 
-  if(!user){
-    Navigate('/login');
-    return null;
-  }
+  // if (!user) {
+  //   Navigate('/login');
+  //   return
+  // }
 
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
