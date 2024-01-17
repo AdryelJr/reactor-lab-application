@@ -3,29 +3,39 @@ import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import iconGoogle from '../../assets/image/iconGoogle.png';
 import { Button } from '../../componentes/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInUser } from '../../services/connAPI';
-import { useUser } from '../../contexts/AuthContext';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import './style.scss';
+import { auth } from '../../services/firebase';
+import { useUser } from '../../contexts/AuthContext';
 
 export function SignIn() {
-    const { setUserData } = useUser();
-    const navigate = useNavigate();
-
+    const Navigate = useNavigate();
+    const { user, signInWithGoogle } = useUser();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     async function handleSignInAccount(event: FormEvent) {
         event.preventDefault();
 
-        try {
-            const user = await signInUser({ email, password });
-            setUserData(user);
-            navigate('/feed');
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                console.log(errorCode)
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+    }
 
-        } catch (error) {
-            console.log('Erro ao fazer login: ', error);
+    async function handleCreateAccountGoogle() {
+        if (!user) {
+            await signInWithGoogle();
         }
+        Navigate('/feed')
     }
 
     return (
@@ -47,7 +57,6 @@ export function SignIn() {
                         </Link>
                     </div>
                 </nav>
-
 
                 <main className='main-container'>
                     <div className='div-esquerda'>
@@ -74,7 +83,7 @@ export function SignIn() {
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>
-                            <button className='button-google'>
+                            <button onClick={handleCreateAccountGoogle} className='button-google'>
                                 <img width={50} src={iconGoogle} alt="icon google" />
                                 <span>Entrar com o google</span>
                             </button>

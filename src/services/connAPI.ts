@@ -21,26 +21,3 @@ export const createUser = async (userData: { name: string, email: string, passwo
         throw error;
     }
 }
-
-export const signInUser = async (userData: { email: string, password: string }) => {
-    try {
-        const response = await fetch(`${apiUrl}/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
-        if (response.ok) {
-            const responseData = await response.json();
-            return responseData.user;
-        } else {
-            throw new Error(`Erro ao fazer login: ${response.statusText}`);
-        }
-    } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        throw error;
-    }
-}
-
-

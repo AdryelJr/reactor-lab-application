@@ -13,6 +13,7 @@ import { useUser } from '../../contexts/AuthContext';
 export function Register() {
     const { setUserData } = useUser();
     const navigate = useNavigate();
+    const { user, signInWithGoogle } = useUser();
     
     const [erroPass, setErroPass] = useState(false);
     const [name, setName] = useState('');
@@ -42,6 +43,13 @@ export function Register() {
         navigate('/feed');
     }
 
+    async function handleCreateAccountGoogle() {
+        if (!user) {
+            await signInWithGoogle();
+        }
+        navigate('/feed')
+    }
+
     return (
         <>
             <div className='container-SignIn'>
@@ -61,7 +69,6 @@ export function Register() {
                         </Link>
                     </div>
                 </nav>
-
 
                 <main className='main-container'>
                     <div className='div-centro'>
@@ -106,7 +113,7 @@ export function Register() {
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>
-                            <button className='button-google'>
+                            <button onClick={handleCreateAccountGoogle} className='button-google'>
                                 <img width={50} src={iconGoogle} alt="icon google" />
                                 <span>Entrar com o google</span>
                             </button>
