@@ -19,7 +19,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/cadastro" element={<Register />} />
-          <Route path="*" element={<SignIn />} />
+          <Route path="/*" element={<SignIn />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>
