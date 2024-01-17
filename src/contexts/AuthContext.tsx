@@ -6,6 +6,7 @@ type User = {
     id: string | null;
     name: string | null;
     email: string | null;
+    avatar: string | null
 }
 
 type AuthContextType = {
@@ -38,12 +39,13 @@ export function UserProvider(props: UserProviderProps) {
         const result = await signInWithPopup(auth, provider);
 
         if (result.user) {
-            const { displayName, email, uid } = result.user;
+            const { displayName, email, uid, photoURL } = result.user;
 
             setUserData({
-                id: uid,
-                name: displayName,
-                email: email
+                id: uid || null,
+                name: displayName || null,
+                email: email || null,
+                avatar: photoURL || null,
             });
         }
     }
