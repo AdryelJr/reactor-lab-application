@@ -18,27 +18,20 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
 
     useEffect(() => {
         const fetchSearchResults = async () => {
-            
+
             const q = query(
                 collection(db, 'Collection users'),
-                where('name', '>=', search),
+                where('name', '>=', search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()),
+                where('name', '<', search.charAt(0).toUpperCase() + search.slice(1).toLowerCase() + '\uf8ff')
             );
 
             const data = await getDocs(q);
-            const results = data.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id
-            }));
+            const results = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             setSearchResults(results);
-            console.log(results);
         };
 
         fetchSearchResults();
     }, [search]);
-
-
-
-
 
     const [isSearchVisible, setIsSearchVisible] = useState(false);
 
