@@ -3,9 +3,9 @@ import './style.scss'
 import { ProfileImg } from '../ProfileImg'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { SingOut } from '../../hook/singOut/SingOut'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../services/firebase'
+import { SingOut } from '../../hook/singOut/SingOut'
 
 type SearchFocus = {
     onSearchFocus?: any;
@@ -45,6 +45,16 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
     const handleInputblur = () => {
         setIsSearchVisible(false)
         onSearchBlur();
+    }
+
+
+    const [boxProfile, setBoxProfile] = useState(false);
+    const openBoxProfile = () => {
+        setTimeout(() => {
+            setBoxProfile(!boxProfile)
+            console.log(boxProfile)
+        }, 100)
+
     }
 
     return (
@@ -97,11 +107,17 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     </Link>
                 </div>
 
-                <Link to='/profile' className='div-profile'>
+                <button className='div-profile' onClick={openBoxProfile}>
                     <ProfileImg />
-                    <p>Perfil</p>
-                </Link>
-                <SingOut></SingOut>
+                    <p>Eu&#9660;</p>
+                    {boxProfile ? (
+                        <div className={`div-boxProfile ${boxProfile ? 'show' : ''}`}>
+                            <Link to='/profile'>Perfil</Link>
+                            <SingOut></SingOut>
+                        </div>
+                    ) : null}
+                </button>
+
             </div>
         </div>
     )

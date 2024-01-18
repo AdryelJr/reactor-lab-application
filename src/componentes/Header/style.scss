@@ -110,11 +110,11 @@
 
         .global-nav {
             display: flex;
-            padding: 0 35px;
+            padding: 0 20px;
 
             .icon {
                 cursor: pointer;
-                width: 80px;
+                width: 75px;
                 margin: 0 10px;
                 height: 55px;
                 text-align: center;
@@ -140,10 +140,11 @@
         }
 
         .div-profile {
+            position: relative;
             cursor: pointer;
             transition: all .1s ease-in-out;
-            text-decoration: none;
-            color: #333;
+            background-color: transparent;
+            border: 0;
 
             img {
                 width: 38px;
@@ -152,11 +153,25 @@
             p {
                 font-size: .8em;
                 text-align: center;
+                color: #6f6f6f;
             }
-        }
 
-        .div-profile:hover {
-            opacity: 0.8;
+            .div-boxProfile {
+                position: absolute;
+                margin-top: .5em;
+                z-index: 999;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 1px solid #ccc;
+                background-color: #fff;
+                border: 4px;
+                transition: all .2s ease-in-out;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }
