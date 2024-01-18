@@ -22,6 +22,7 @@
             @media (max-width: 999px) {
                 margin-left: -1em;
             }
+
             @media (max-width: 850px) {
                 margin-left: -5em;
             }
@@ -34,6 +35,7 @@
             @media (max-width: 999px) {
                 max-width: 50%;
             }
+
             @media (max-width: 850px) {
                 max-width: 30%;
             }
@@ -61,14 +63,43 @@
                 width: 368px;
                 margin: 1px 6px;
                 border-radius: 8px;
-                height: 100px;
+                height: auto;
+                min-height: 100px;
+                max-height: 300px;
                 z-index: 999;
+                overflow: hidden;
                 border: 1px solid #ccc;
                 transition: all ease-in-out 0.2s;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: .3em;
+                    padding: .2em;
+                    border-radius: 8px;
+                    transition: all .2s ease;
+
+                    img {
+                        width: 50px;
+                        margin-right: 15px;
+                        border-radius: 9999px;
+                    }
+
+                    li {
+                        list-style: none;
+                        font-size: 1.1em;
+                        font-weight: bold;
+                    }
+                }
+
+                div:hover {
+                    background-color: #ccc;
+                    cursor: pointer;
+                }
             }
 
-            &.show{
-                .div-input-search{
+            &.show {
+                .div-input-search {
                     opacity: 1;
                     display: block;
                     transition: all ease-in-out 0.2s;

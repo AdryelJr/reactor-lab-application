@@ -1,9 +1,11 @@
 import logoImg from '../../assets/image/Rl.png'
 import './style.scss'
 import { ProfileImg } from '../ProfileImg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SingOut } from '../../hook/singOut/SingOut'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase'
 
 type SearchFocus = {
     onSearchFocus?: any;
@@ -11,7 +13,34 @@ type SearchFocus = {
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
-    const [isSearchVisible, setIsSearchVisible] = useState(false)
+    const [search, setSearch] = useState('');
+    const [searchResults, setSearchResults] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchSearchResults = async () => {
+            
+            const q = query(
+                collection(db, 'Collection users'),
+                where('name', '>=', search),
+            );
+
+            const data = await getDocs(q);
+            const results = data.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id
+            }));
+            setSearchResults(results);
+            console.log(results);
+        };
+
+        fetchSearchResults();
+    }, [search]);
+
+
+
+
+
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
 
     const handleInputFocus = () => {
         setTimeout(() => {
@@ -33,12 +62,28 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     <input
                         type="text"
                         placeholder='Pesquisar'
+                        onChange={(e) => setSearch(e.target.value)}
                         onFocus={handleInputFocus}
                         onBlur={handleInputblur}
                     />
                     {isSearchVisible && (
                         <div className='div-input-search'>
-                            div em branco perfil
+                            {search.trim() === '' ? (
+                                <p>O que procura?</p>
+                            ) : (
+                                searchResults.length > 0 ? (
+                                    <ul>
+                                        {searchResults.map((result) => (
+                                            <div key={result.id}>
+                                                <img src={result.avatar} alt={result.name} />
+                                                <li>{result.name}</li>
+                                            </div>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>Nada encontrado</p>
+                                )
+                            )}
                         </div>
                     )}
                 </div>

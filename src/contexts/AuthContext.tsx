@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../services/firebase';
+import { auth, db } from '../services/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 type User = {
     id: string | null;
@@ -46,6 +47,12 @@ export function UserProvider(props: UserProviderProps) {
                 name: displayName || null,
                 email: email || null,
                 avatar: photoURL || null,
+            });
+            await setDoc(doc(db, "Collection users", uid), {
+                id: uid,
+                name: displayName,
+                email: email,
+                avatar: photoURL,
             });
         }
     }
