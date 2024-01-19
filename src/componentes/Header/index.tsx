@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../services/firebase'
 import { SingOut } from '../../hook/singOut/SingOut'
+import { useUser } from '../../contexts/AuthContext'
 
 type SearchFocus = {
     onSearchFocus?: any;
@@ -13,6 +14,11 @@ type SearchFocus = {
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
+    const { user } = useUser();
+    const avatar = user?.avatar ?? 'https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png';
+    const name = user?.name ?? 'n/a';
+
+
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState<any[]>([]);
 
@@ -112,12 +118,19 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     <p>Eu&#9660;</p>
                     {boxProfile ? (
                         <div className={`div-boxProfile ${boxProfile ? 'show' : ''}`}>
-                            <Link to='/profile'>Perfil</Link>
-                            <SingOut></SingOut>
+                            <div className='ver-perfil'>
+                                <div className='div-profile-avatarAndName'>
+                                    <img src={avatar} alt={name} />
+                                    <p>{name}</p>
+                                </div>
+                                <Link className='link-profile' to='/profile'>Ver perfil</Link>
+                            </div>
+                            <div className='div-sair'>
+                                <SingOut></SingOut>
+                            </div>
                         </div>
                     ) : null}
                 </button>
-
             </div>
         </div>
     )
