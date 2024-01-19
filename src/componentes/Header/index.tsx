@@ -58,7 +58,6 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
     const openBoxProfile = () => {
         setTimeout(() => {
             setBoxProfile(!boxProfile)
-            console.log(boxProfile)
         }, 100)
 
     }
