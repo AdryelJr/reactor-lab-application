@@ -1,4 +1,4 @@
-.publi{
+.publi {
     position: relative;
     background-color: #fff;
     width: 100%;
@@ -6,11 +6,11 @@
     border-radius: 8px;
     padding: 15px 15px 4px 15px;
 
-    & + .publi{
+    &+.publi {
         margin-top: 15px;
     }
 
-    .TresPontos{
+    .TresPontos {
         cursor: pointer;
         width: 35px;
         text-align: center;
@@ -21,56 +21,59 @@
         right: 10px;
         transition: all .3s ease-in-out;
 
-        svg{
+        svg {
             width: 25px;
         }
     }
-    .TresPontos:hover{
+
+    .TresPontos:hover {
         background-color: #cccccc30;
     }
 
-    .header-publi{
+    .header-publi {
         display: flex;
         color: #333;
 
-        img{
+        img {
             width: 45px;
             border-radius: 999px;
         }
-        p{
+
+        p {
             margin: 10px;
             font-weight: 500;
         }
     }
 
-    .body-publi{
+    .body-publi {
         border-bottom: .5px solid #cccccca7;
         padding: 10px 5px;
     }
 
-    .footer-publi{
+    .footer-publi {
         display: flex;
 
-        .like{
+        .like {
             color: #333333a5;
             display: flex;
-           
+
             align-items: center;
             justify-content: center;
             border-radius: 4px;
             transition: all .3s ease-in-out;
             cursor: pointer;
-            padding: 5px 8px;
+            padding: 8px;
+            width: 50%;
             border: 0;
-            margin: 4px 0px 0 5px;
+            margin: 4px 3px 0 4px;
 
-            svg{
-                width: 33px;
+            svg {
+                margin-right: 5px;
                 stroke: #333333a5;
             }
-            
         }
-        .like:hover{
+
+        .like:hover {
             background-color: #cccccc5d;
         }
     }
