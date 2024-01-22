@@ -1,0 +1,78 @@
+.publi{
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    border: .5px solid #cccccca7;
+    border-radius: 8px;
+    padding: 15px 15px 4px 15px;
+
+    & + .publi{
+        margin-top: 15px;
+    }
+
+    .TresPontos{
+        cursor: pointer;
+        width: 35px;
+        text-align: center;
+        height: 26px;
+        position: absolute;
+        top: 5px;
+        border-radius: 10px;
+        right: 10px;
+        transition: all .3s ease-in-out;
+
+        svg{
+            width: 25px;
+        }
+    }
+    .TresPontos:hover{
+        background-color: #cccccc30;
+    }
+
+    .header-publi{
+        display: flex;
+        color: #333;
+
+        img{
+            width: 45px;
+            border-radius: 999px;
+        }
+        p{
+            margin: 10px;
+            font-weight: 500;
+        }
+    }
+
+    .body-publi{
+        border-bottom: .5px solid #cccccca7;
+        padding: 10px 5px;
+    }
+
+    .footer-publi{
+        display: flex;
+
+        .like{
+            color: #333333a5;
+            display: flex;
+           
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            padding: 5px 8px;
+            border: 0;
+            margin: 4px 0px 0 5px;
+
+            svg{
+                width: 33px;
+                stroke: #333333a5;
+            }
+            
+        }
+        .like:hover{
+            background-color: #cccccc5d;
+        }
+    }
+
+}
