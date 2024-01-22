@@ -90,8 +90,8 @@ export function Feed() {
           isAnswered: databasePubli[key].isAnswered,
         }));
 
-        console.log(parsedPubli);
-        setPubli(parsedPubli);
+        const reversedPubli = parsedPubli.reverse();
+        setPubli(reversedPubli);
       }
     }, (error) => {
       console.error("Error getting document: ", error);

@@ -19,7 +19,7 @@ export function Publi({ content, author }: PubliProps
                 <div>
                     <img src={author.avatar} alt={author.name} />
                 </div>
-                <div>
+                <div className='author-publi'>
                     <p>{author.name}</p>
                 </div>
             </div>
