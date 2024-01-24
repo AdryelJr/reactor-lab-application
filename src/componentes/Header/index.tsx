@@ -1,12 +1,9 @@
 import logoImg from '../../assets/image/Rl.png'
 import './style.scss'
 import { ProfileImg } from '../ProfileImg'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { collection, getDocs, query, where } from 'firebase/firestore'
-import { db } from '../../services/firebase'
 import { SingOut } from '../../hook/singOut/SingOut'
-import { useUser } from '../../contexts/AuthContext'
 
 type SearchFocus = {
     onSearchFocus?: any;
@@ -14,31 +11,6 @@ type SearchFocus = {
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
-    const { user } = useUser();
-    const avatar = user?.avatar ?? 'https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png';
-    const name = user?.name ?? 'n/a';
-
-
-    const [search, setSearch] = useState('');
-    const [searchResults, setSearchResults] = useState<any[]>([]);
-
-    useEffect(() => {
-        const fetchSearchResults = async () => {
-
-            const q = query(
-                collection(db, 'Collection users'),
-                where('name', '>=', search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()),
-                where('name', '<', search.charAt(0).toUpperCase() + search.slice(1).toLowerCase() + '\uf8ff')
-            );
-
-            const data = await getDocs(q);
-            const results = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            setSearchResults(results);
-        };
-
-        fetchSearchResults();
-    }, [search]);
-
     const [isSearchVisible, setIsSearchVisible] = useState(false);
 
     const handleInputFocus = () => {
@@ -70,28 +42,12 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     <input
                         type="text"
                         placeholder='Pesquisar'
-                        onChange={(e) => setSearch(e.target.value)}
                         onFocus={handleInputFocus}
                         onBlur={handleInputblur}
                     />
                     {isSearchVisible && (
                         <div className='div-input-search'>
-                            {search.trim() === '' ? (
-                                <p>O que procura?</p>
-                            ) : (
-                                searchResults.length > 0 ? (
-                                    <ul>
-                                        {searchResults.map((result) => (
-                                            <div key={result.id}>
-                                                <img src={result.avatar} alt={result.name} />
-                                                <li>{result.name}</li>
-                                            </div>
-                                        ))}
-                                    </ul>
-                                ) : (
-                                    <p>Nada encontrado</p>
-                                )
-                            )}
+                            div procura conta
                         </div>
                     )}
                 </div>
@@ -119,8 +75,8 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                         <div className={`div-boxProfile ${boxProfile ? 'show' : ''}`}>
                             <div className='ver-perfil'>
                                 <div className='div-profile-avatarAndName'>
-                                    <img src={avatar} alt={name} />
-                                    <p>{name}</p>
+                                    <img src="{avatar}" alt="{name}" />
+                                    <p>name</p>
                                 </div>
                                 <Link className='link-profile' to='/profile'>Ver perfil</Link>
                             </div>

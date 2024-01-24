@@ -1,54 +1,16 @@
-import { FormEvent, useState } from 'react';
-
+import { useState } from 'react';
 import { Button } from '../../componentes/Button';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import iconGoogle from '../../assets/image/iconGoogle.png';;
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
-import { createUser } from '../../services/connAPI';
-import { useUser } from '../../contexts/AuthContext';
 
 export function Register() {
-    const { setUserData } = useUser();
-    const navigate = useNavigate();
-    const { user, signInWithGoogle } = useUser();
-    
-    const [erroPass, setErroPass] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    async function handleCreateAccount(event: FormEvent) {
-        event.preventDefault()
-        if (password !== confirmPassword || password.length < 6) {
-            setErroPass(true)
-            return;
-        }
-        setErroPass(false);
-        try {
-            const user = await createUser({ name, email, password });
-            setUserData(user);
-
-        } catch (error) {
-            console.error('Erro ao cadastrar usuário:', error);
-
-            if (error instanceof SyntaxError) {
-                throw new Error('Erro de análise JSON');
-            }
-            throw new Error('Erro desconhecido ao cadastrar usuário');
-        }
-        navigate('/feed');
-    }
-
-    async function handleCreateAccountGoogle() {
-        if (!user) {
-            await signInWithGoogle();
-        }
-        navigate('/feed')
-    }
 
     return (
         <>
@@ -106,14 +68,14 @@ export function Register() {
                                 value={confirmPassword}
                             />
 
-                            <p className={`erroPassword ${erroPass ? 'visible' : ''}`}>Senhas não conferem</p>
+                            <p className={`erroPassword  ? 'visible' : ''}`}>Senhas não conferem</p>
 
                             <span>Já tem uma conta? <a href="/login">Entrar agora</a></span>
-                            <Button onClick={handleCreateAccount} fraseButton='Cadastrar' />
+                            <Button fraseButton='Cadastrar' />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>
-                            <button onClick={handleCreateAccountGoogle} className='button-google'>
+                            <button className='button-google'>
                                 <img width={50} src={iconGoogle} alt="icon google" />
                                 <span>Entrar com o google</span>
                             </button>
