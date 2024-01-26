@@ -14,8 +14,13 @@
     background-color: rgb(255, 255, 255);
     width: 130px;
     height: 115px;
-    top: 50%;
+    top: 6em;
     left: 3%;
+
+    img{
+      width: 100%;
+      border-radius: 0;
+    }
   }
 
   .cima-profile{
@@ -41,10 +46,22 @@
       display: flex;
       padding: 0 12em;
 
+      p{
+        top: 50%;
+        font-size: 30px;
+        position: absolute;
+        width: 50%;
+        color: #dee1e4;
+      }
+
       span{
         margin: 0 15px;
         color: #dee1e4;
         font-weight: 500;
+
+        strong{
+          font-size: 1.3em;
+        }
       }
     }
 

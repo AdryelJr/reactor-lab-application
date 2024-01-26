@@ -4,6 +4,7 @@ import { ProfileImg } from '../ProfileImg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SingOut } from '../../hook/singOut/SingOut'
+import { useUser } from '../../contexts/AuthContext'
 
 type SearchFocus = {
     onSearchFocus?: any;
@@ -11,6 +12,7 @@ type SearchFocus = {
 }
 
 export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
+    const { user } = useUser();
     const [isSearchVisible, setIsSearchVisible] = useState(false);
 
     const handleInputFocus = () => {
@@ -25,13 +27,11 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
         onSearchBlur();
     }
 
-
     const [boxProfile, setBoxProfile] = useState(false);
     const openBoxProfile = () => {
         setTimeout(() => {
             setBoxProfile(!boxProfile)
         }, 100)
-
     }
 
     return (
@@ -75,10 +75,13 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                         <div className={`div-boxProfile ${boxProfile ? 'show' : ''}`}>
                             <div className='ver-perfil'>
                                 <div className='div-profile-avatarAndName'>
-                                    <img src="{avatar}" alt="{name}" />
-                                    <p>name</p>
+                                    <ProfileImg />
+                                    <p>{user?.name}</p>
                                 </div>
                                 <Link className='link-profile' to='/profile'>Ver perfil</Link>
+                            </div>
+                            <div className='div-configuracao'>
+                                Configurações
                             </div>
                             <div className='div-sair'>
                                 <SingOut></SingOut>

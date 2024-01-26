@@ -1,8 +1,14 @@
 import { Header } from '../../componentes/Header';
-// import { ProfileImg } from '../../componentes/ProfileImg';
+import { useUser } from '../../contexts/AuthContext';
+import { ProfileImg } from '../../componentes/ProfileImg';
 import './style.scss'
 
 export function ProfilePage() {
+  const { user } = useUser();
+
+  const followers = user?.followers.length;
+  const following = user?.following.length;
+
   return (
     <div>
       <Header />
@@ -10,6 +16,7 @@ export function ProfilePage() {
       <div className='content-profilePage'>
         <div className='img-profile'>
           {/* FOTO DE PERFIL */}
+          <ProfileImg></ProfileImg>
         </div>
         <div className='cima-profile'>
           {/* CADA DO PERFIL */}
@@ -19,8 +26,9 @@ export function ProfilePage() {
         <div className='baixo-profile'>
           {/* INFORMAÇÕES DO PERFIL */}
           <div className='div-span-information'>
-            <span>0 <br /> Seguidores</span>
-            <span>0 <br /> Seguindo</span>
+            <p>{user?.name}</p>
+            <span><strong>{followers}</strong><br /> Seguidores</span>
+            <span><strong>{following}</strong> <br /> Seguindo</span>
           </div>
           <div className='edit-profile'>
             <button>Editar conta</button>

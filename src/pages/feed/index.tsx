@@ -4,6 +4,7 @@ import { Button } from "../../componentes/Button";
 import { ProfileImg } from "../../componentes/ProfileImg";
 
 import './style.scss'
+
 export function Feed() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 

@@ -1,10 +1,12 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { fetchUserDataFromDatabase } from '../services/connAPI';
 
 type User = {
-    id: string | null;
     name: string | null;
     email: string | null;
-    avatar: string | null
+    avatar: string | null;
+    following: any[];
+    followers: any[];
 }
 
 type AuthContextType = {
@@ -22,10 +24,20 @@ export function UserProvider(props: UserProviderProps) {
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
-        if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-        }
-    }, []);
+        const authenticateUser = async () => {
+            const storedUserId = localStorage.getItem('userId')
+            if (storedUserId) {
+                try {
+                    const userData = await fetchUserDataFromDatabase(storedUserId);
+                    setUser(userData);
+                } catch (error) {
+                    console.error('Erro ao obter dados do usuário', error)
+                }
+            }
+        };
+        authenticateUser();
+    }, [setUser]);
+
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>

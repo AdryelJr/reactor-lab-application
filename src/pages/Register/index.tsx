@@ -6,12 +6,8 @@ import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
 import { createUser } from '../../services/connAPI';
-import { useUser } from '../../contexts/AuthContext';
-
 
 export function Register() {
-    const { setUser } = useUser();
-
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -29,7 +25,7 @@ export function Register() {
         try {
             const user :any = await createUser({ name, email, password });
             if (user) {
-                setUser(user);
+                localStorage.setItem('userId', user.id)
                 navigate('/feed');
             } else {
                 console.error('Erro ao criar usuário: usuário não foi retornado.');
@@ -40,15 +36,12 @@ export function Register() {
             if (error instanceof SyntaxError) {
                 console.error('Erro de análise JSON');
             } else if (error instanceof Response) {
-                // Adicione tratamento específico para respostas de erro do servidor
                 console.error('Erro no servidor:', error.status, error.statusText);
             } else {
                 console.error('Erro desconhecido ao cadastrar usuário', error);
             }
-
             throw new Error('Erro desconhecido ao cadastrar usuário');
         }
-
     }
 
     return (
