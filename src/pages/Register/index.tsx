@@ -1,16 +1,55 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Button } from '../../componentes/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import iconGoogle from '../../assets/image/iconGoogle.png';;
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 
 import './style.scss';
+import { createUser } from '../../services/connAPI';
+import { useUser } from '../../contexts/AuthContext';
+
 
 export function Register() {
+    const { setUser } = useUser();
+
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [erroPass, setErroPass] = useState(false)
+
+    async function handleCreateAccount(event: FormEvent) {
+        event.preventDefault()
+        if (password !== confirmPassword || password.length < 6) {
+            setErroPass(true)
+            return;
+        }
+        setErroPass(false);
+        try {
+            const user :any = await createUser({ name, email, password });
+            if (user) {
+                setUser(user);
+                navigate('/feed');
+            } else {
+                console.error('Erro ao criar usuário: usuário não foi retornado.');
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar usuário:', error);
+
+            if (error instanceof SyntaxError) {
+                console.error('Erro de análise JSON');
+            } else if (error instanceof Response) {
+                // Adicione tratamento específico para respostas de erro do servidor
+                console.error('Erro no servidor:', error.status, error.statusText);
+            } else {
+                console.error('Erro desconhecido ao cadastrar usuário', error);
+            }
+
+            throw new Error('Erro desconhecido ao cadastrar usuário');
+        }
+
+    }
 
     return (
         <>
@@ -67,11 +106,10 @@ export function Register() {
                                 onChange={(e) => (setConfirmPassword(e.target.value))}
                                 value={confirmPassword}
                             />
-
-                            <p className={`erroPassword  ? 'visible' : ''}`}>Senhas não conferem</p>
+                            <p className={`${erroPass ? 'visible' : ''}`}>Senhas não conferem</p>
 
                             <span>Já tem uma conta? <a href="/login">Entrar agora</a></span>
-                            <Button fraseButton='Cadastrar' />
+                            <Button fraseButton='Cadastrar' onClick={handleCreateAccount} />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>

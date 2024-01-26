@@ -5,10 +5,12 @@ import { Feed } from "./pages/feed/index";
 import { SignIn } from './pages/SignIn';
 import { Register } from './pages/Register';
 import { ProfilePage } from './pages/ProfilePage';
+import { UserProvider } from './contexts/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
+      <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -18,6 +20,7 @@ function App() {
           <Route path="/cadastro" element={<Register />} />
           <Route path="/*" element={<SignIn />} />
         </Routes>
+      </UserProvider>
     </BrowserRouter>
   );
 }
