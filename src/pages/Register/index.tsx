@@ -23,9 +23,14 @@ export function Register() {
         }
         setErroPass(false);
         try {
-            const user :any = await createUser({ name, email, password });
+            const user: any = await createUser({ name, email, password });
             if (user) {
                 localStorage.setItem('userId', user.id)
+                const userTemp = {
+                    name: name,
+                    password: password
+                }
+                localStorage.setItem('userDados', JSON.stringify(userTemp))  
                 navigate('/feed');
             } else {
                 console.error('Erro ao criar usuário: usuário não foi retornado.');

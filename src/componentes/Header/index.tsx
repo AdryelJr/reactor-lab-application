@@ -68,7 +68,7 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                     </Link>
                 </div>
 
-                <button className='div-profile' onClick={openBoxProfile}>
+                <div className='div-profile' onClick={openBoxProfile}>
                     <ProfileImg />
                     <p>Eu&#9660;</p>
                     {boxProfile ? (
@@ -88,7 +88,7 @@ export function Header({ onSearchFocus, onSearchBlur }: SearchFocus) {
                             </div>
                         </div>
                     ) : null}
-                </button>
+                </div>
             </div>
         </div>
     )

@@ -4,8 +4,19 @@ import { Button } from "../../componentes/Button";
 import { ProfileImg } from "../../componentes/ProfileImg";
 
 import './style.scss'
+// import { useUser } from "../../contexts/AuthContext";
+// import { useNavigate } from "react-router-dom";
 
 export function Feed() {
+  // const { user } = useUser();
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate('/login');
+  //   }
+  // }, [user]);
+
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const handleSearchFocus = () => {
