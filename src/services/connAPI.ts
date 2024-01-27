@@ -12,6 +12,7 @@ export const createUser = async (userData: { name: string, email: string, passwo
 
         if (response.ok) {
             const userID = await response.json();
+            // PRECISA MUDAR A API, RETORNAR NOME E EMAIL TBM
             return userID;
         } else {
             throw new Error(`Erro ao cadastrar usuário: ${response.statusText}`);
@@ -22,6 +23,8 @@ export const createUser = async (userData: { name: string, email: string, passwo
         throw error;
     }
 }
+
+// QUANDO A API ESTIVER RETORNANDO NOME E EMAIL, PODE TIRAR ESSA PARTE DE BAIXO E FAZER O CONTEXT SOMENTE COM O NOME E EMAIL
 
 type UserDataType = {
     name: string | null;

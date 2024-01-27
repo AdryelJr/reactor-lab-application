@@ -13,10 +13,11 @@ export function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [erroPass, setErroPass] = useState(false)
+    const [erroPass, setErroPass] = useState(false);
 
     async function handleCreateAccount(event: FormEvent) {
         event.preventDefault()
+    
         if (password !== confirmPassword || password.length < 6) {
             setErroPass(true)
             return;
@@ -30,7 +31,7 @@ export function Register() {
                     name: name,
                     password: password
                 }
-                localStorage.setItem('userDados', JSON.stringify(userTemp))  
+                localStorage.setItem('userDados', JSON.stringify(userTemp))
                 navigate('/feed');
             } else {
                 console.error('Erro ao criar usuário: usuário não foi retornado.');

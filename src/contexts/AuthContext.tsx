@@ -21,25 +21,13 @@ type UserProviderProps = {
 export const AuthContext = createContext({} as AuthContextType);
 
 export function UserProvider(props: UserProviderProps) {
-    const [user, setUser] = useState<User | undefined>();
-
-    const handleUser = () => {
+    const [user, setUser] = useState<User | undefined>(() => {
         const storedUser = localStorage.getItem('userDados');
-        if (storedUser) {
-            const parsedUser = JSON.parse(storedUser);
-            setUser(parsedUser);
-        }
-    };
-    useEffect(() => {
-        handleUser();
-    }, []);
+        return storedUser ? JSON.parse(storedUser) : undefined;
+    });
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-        }
-        console.log("PRIMEIRO USEEFFECT", user)
-    }, [user]);
+    // QUANDO A API ESTIVER RETORNANDO NOME E EMAIL, TIRAR ESSES LOCALSTORAGE 
+    // DE UMA PAGINA PRA OUTRA E FAZER A VALIDAÇÃO SO NESSA PAGINA
 
     useEffect(() => {
         const authenticate = async () => {
@@ -57,7 +45,7 @@ export function UserProvider(props: UserProviderProps) {
         authenticate();
     }, [])
 
-    
+
     return (
         <AuthContext.Provider value={{ user, setUser }}>
             {props.children}
