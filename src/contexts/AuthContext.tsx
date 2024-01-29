@@ -1,57 +1,29 @@
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { fetchUserDataFromDatabase } from '../services/connAPI';
-
-type User = {
-    name?: string | null;
-    email?: string | null;
-    avatar?: string | null;
-    following?: any[];
-    followers?: any[];
-}
-
-type AuthContextType = {
-    user: User | undefined | null;
-    setUser: any | undefined;
-}
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 type UserProviderProps = {
     children: ReactNode;
 }
 
-export const AuthContext = createContext({} as AuthContextType);
+export const AuthContext = createContext({} as any);
 
 export function UserProvider(props: UserProviderProps) {
-    const [user, setUser] = useState<User | undefined>(() => {
-        const storedUser = localStorage.getItem('userDados');
-        return storedUser ? JSON.parse(storedUser) : undefined;
+    const [user, setUser] = useState<any>(() => {
+        const storedUser = localStorage.getItem('user');
+        return storedUser ? JSON.parse(storedUser) : null;
     });
 
-    // QUANDO A API ESTIVER RETORNANDO NOME E EMAIL, TIRAR ESSES LOCALSTORAGE 
-    // DE UMA PAGINA PRA OUTRA E FAZER A VALIDAÇÃO SO NESSA PAGINA
-
-    useEffect(() => {
-        const authenticate = async () => {
-            const storedUserId = localStorage.getItem('userId');
-            if (storedUserId) {
-                try {
-                    const userData = await fetchUserDataFromDatabase(storedUserId);
-                    setUser(userData)
-                    console.log("SEGUNDO USEEFFECT", userData)
-                } catch (error) {
-                    console.error('Erro ao obter dados do usuário', error)
-                }
-            }
-        }
-        authenticate();
-    }, [])
-
+    const updateUser = (newUser: any) => {
+        setUser(newUser);
+        localStorage.setItem('user', JSON.stringify(newUser));
+    };
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, updateUser }}>
             {props.children}
         </AuthContext.Provider>
     );
 }
+
 
 export function useUser() {
     const context = useContext(AuthContext);

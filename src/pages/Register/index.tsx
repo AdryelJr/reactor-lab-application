@@ -3,11 +3,13 @@ import { Button } from '../../componentes/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import iconGoogle from '../../assets/image/iconGoogle.png';;
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
+import { createUser } from '../../services/connAPI';
+import { useUser } from '../../contexts/AuthContext';
 
 import './style.scss';
-import { createUser } from '../../services/connAPI';
 
 export function Register() {
+    const { updateUser } = useUser();
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,7 +19,7 @@ export function Register() {
 
     async function handleCreateAccount(event: FormEvent) {
         event.preventDefault()
-    
+
         if (password !== confirmPassword || password.length < 6) {
             setErroPass(true)
             return;
@@ -25,13 +27,8 @@ export function Register() {
         setErroPass(false);
         try {
             const user: any = await createUser({ name, email, password });
-            if (user) {
-                localStorage.setItem('userId', user.id)
-                const userTemp = {
-                    name: name,
-                    password: password
-                }
-                localStorage.setItem('userDados', JSON.stringify(userTemp))
+            if (user && user.userId) {
+                updateUser(user.userDados);
                 navigate('/feed');
             } else {
                 console.error('Erro ao criar usuário: usuário não foi retornado.');
