@@ -13,7 +13,6 @@ export function Feed() {
 
   useEffect(() => {
     if (!user) {
-      console.log(user);
       navigate('/login');
     }
   }, [user]);

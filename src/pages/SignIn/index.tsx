@@ -1,15 +1,32 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import logoCompletImg from '../../assets/image/ReactorLogo.png';
 import iconGoogle from '../../assets/image/iconGoogle.png';
 import { Button } from '../../componentes/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { validateUserEmail } from '../../services/connAPI';
 
 import './style.scss';
 
 export function SignIn() {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    async function handleSignIn(event: FormEvent) {
+        event.preventDefault();
+
+        if (email && password) {
+            try {
+                const user: any = await validateUserEmail({ email, password });
+                if (user && user.email) {
+                    console.log('console login', user);
+                    navigate('/feed')
+                }
+            } catch (error) {
+                console.error('Erro ao entrar na conta', error);
+            }
+        }
+    }
 
     return (
         <>
@@ -52,7 +69,7 @@ export function SignIn() {
                                 value={password}
                             />
                             <a href="#">Esqueceu a senha?</a>
-                            <Button fraseButton='Entrar' />
+                            <Button fraseButton='Entrar' onClick={handleSignIn} />
                         </form>
                         <div className='bottom-form'>
                             <div className='linha-meio'>ou</div>

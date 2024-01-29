@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { fetchUserDataFromDatabase } from '../services/connAPI';
 
 type UserProviderProps = {
     children: ReactNode;
@@ -17,7 +18,22 @@ export function UserProvider(props: UserProviderProps) {
         localStorage.setItem('user', JSON.stringify(newUser));
     };
 
-    console.log('console authContext', user)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const id_user: any = localStorage.getItem('userId')
+            if (user) {
+                try {
+                    const userData: any = await fetchUserDataFromDatabase(id_user);
+                    setUser(userData,);
+                } catch (error) {
+                    console.error('Erro ao buscar dados do usuário:', error);
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
 
     const logout = () => {
         setUser(null);

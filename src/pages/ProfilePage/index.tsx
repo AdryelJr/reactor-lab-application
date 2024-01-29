@@ -5,10 +5,6 @@ import './style.scss'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-type FollowsType = {
-  followers: number | undefined;
-  following: number | undefined;
-}
 
 export function ProfilePage() {
   const { user } = useUser();
@@ -16,12 +12,11 @@ export function ProfilePage() {
 
   useEffect(() => {
     if (!user) {
-      console.log(user);
       navigate('/login');
     }
   }, [user]);
 
-  const followers: FollowsType = { followers: user?.followers?.length, following: user?.following?.length };
+  const followers: any = { followers: user?.followers?.length, following: user?.following?.length };
 
   return (
     <div>
