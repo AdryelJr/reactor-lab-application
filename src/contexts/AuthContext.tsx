@@ -17,8 +17,15 @@ export function UserProvider(props: UserProviderProps) {
         localStorage.setItem('user', JSON.stringify(newUser));
     };
 
+    console.log('console authContext', user)
+
+    const logout = () => {
+        setUser(null);
+        localStorage.removeItem('user');
+    };
+
     return (
-        <AuthContext.Provider value={{ user, updateUser }}>
+        <AuthContext.Provider value={{ user, updateUser, logout }}>
             {props.children}
         </AuthContext.Provider>
     );
